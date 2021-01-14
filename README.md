@@ -1,1 +1,1 @@
-# myFlix-cleint
+# myFlix-client
