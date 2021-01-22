@@ -1,7 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+
+import { LoginView } from '../login-view/login-view';
+import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export class MainView extends React.Component {
   constructor() {
@@ -12,7 +17,8 @@ export class MainView extends React.Component {
     // Initialize the state to an empty object so we can destructure it later
     this.state = {
       movies: null,
-      selectedMovie: null
+      selectedMovie: null,
+      user: null
     };
   }
 
@@ -35,25 +41,42 @@ export class MainView extends React.Component {
     });
   }
 
+  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+
+  onLoggedIn(user) {
+    this.setState({
+      user
+    });
+  }
+
   // This overrides the render() method of the superclass
   // No need to call super() though, as it does nothing by default
   render() {
     // If the state isn't initialized, this will throw on runtime
     // before the data is initially loaded
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, user } = this.state;
+
+    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
     // Before the movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
-      <div className="main-view">
+      <Row className="main-view justify-content-md-center">
         {selectedMovie
-          ? <MovieView movie={selectedMovie} />
+          ? (
+            <Col md={8} style={{ border: '1px solid black' }}>
+              <MovieView movie={selectedMovie} onBackClick={movie => this.onMovieClick(null)} />
+            </Col>
+          )
           : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+            <Col md={3}>
+              <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+            </Col>
           ))
         }
-      </div>
+      </Row>
     );
   }
 }
