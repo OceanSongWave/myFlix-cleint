@@ -42,10 +42,22 @@ export class MainView extends React.Component {
   }
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-
   onLoggedIn(user) {
     this.setState({
       user
+    });
+  }
+
+  // onRegister(register) {
+  //   this.setState({
+  //     register,
+  //   });
+  // }
+
+  /* When back button click selectedMovie will set on it's initial state*/
+  setInititalState() {
+    this.setState({
+      selectedMovie: null,
     });
   }
 
@@ -54,10 +66,16 @@ export class MainView extends React.Component {
   render() {
     // If the state isn't initialized, this will throw on runtime
     // before the data is initially loaded
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, selectedMovie, user, register } = this.state;
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+    /* Register */
+    // if (!register)
+    //   return (
+    //     <RegistrationView onRegister={(register) => this.onRegister(register)} />
+    //   );
 
     // Before the movies have been loaded
     if (!movies) return <div className="main-view" />;
