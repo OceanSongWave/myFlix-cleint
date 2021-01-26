@@ -8,6 +8,8 @@ import { MovieView } from '../movie-view/movie-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import './main-view.scss'
+
 export class MainView extends React.Component {
   constructor() {
     // Call the superclass constructor
@@ -18,7 +20,8 @@ export class MainView extends React.Component {
     this.state = {
       movies: null,
       selectedMovie: null,
-      user: null
+      user: null,
+      register: null,
     };
   }
 
@@ -48,11 +51,11 @@ export class MainView extends React.Component {
     });
   }
 
-  // onRegister(register) {
-  //   this.setState({
-  //     register,
-  //   });
-  // }
+  onRegister(register) {
+    this.setState({
+      register,
+    });
+  }
 
   /* When back button click selectedMovie will set on it's initial state*/
   setInititalState() {
