@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import './registration-view.scss';
 import axios from 'axios';
+import './registration-view.scss';
+
+import { Form, Button, Container } from 'react-bootstrap';
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
@@ -51,7 +50,7 @@ export function RegistrationView(props) {
           />
           <Form.Text
             className="text-muted"
-          >Must be alphanumeric and contain at least 5 characters
+          >Must be alphanumeric and contain at least 5 characters.
           </Form.Text>
         </Form.Group>
 
@@ -100,22 +99,26 @@ export function RegistrationView(props) {
         </Form.Group>
 
         <Button type="submit"
-          variant="dark"
+          variant="primary"
           className="sign-in-button"
           onClick={handleRegister}
         >
           Submit
         </Button>
-        {/* <br />
+
+        <br />
+        <br />
+
         <div className="current-user">
           Already have an account?
-        </div> */}
+        </div>
         <Link to={`/`}>
           <Button
             variant="secondary"
-            className="sign-up-button existing-user"
+            className="login-button existing-user"
           >
-            Existing User Sign In</Button>
+            Existing User - Log In
+          </Button>
         </Link>
       </Form>
     </Container>
