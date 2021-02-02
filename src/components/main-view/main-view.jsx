@@ -1,9 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import { setMovies } from '../../actions/actions';
+
+import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -16,7 +20,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import './main-view.scss'
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     // Call the superclass constructor
     // so React can initialize it
@@ -58,40 +62,21 @@ export class MainView extends React.Component {
     })
       .then(response => {
         // Assign the result to the state
-        this.setState({
-          movies: response.data
-        });
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
-  onMovieClick(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
-  }
-
-  onRegister(register) {
-    this.setState({
-      register,
-    });
-  }
-
-  /* When back button click selectedMovie will set on it's initial state*/
-  setInititalState() {
-    this.setState({
-      selectedMovie: null,
-    });
-  }
 
   // This overrides the render() method of the superclass
   // No need to call super() though, as it does nothing by default
   render() {
     // If the state isn't initialized, this will throw on runtime
     // before the data is initially loaded
-    const { movies, selectedMovie, user, register } = this.state;
+    let { movies } = this.props;
+    let { user } = this.state;
 
 
     return (
@@ -101,7 +86,7 @@ export class MainView extends React.Component {
           render={() => {
             if (!user)
               return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-            return movies.map(m => <MovieCard key={m._id} movie={m} />)
+            return <MoviesList movies={movies} />;
           }
           } />
 
@@ -153,3 +138,10 @@ export class MainView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+// #4
+export default connect(mapStateToProps, { setMovies })(MainView);
