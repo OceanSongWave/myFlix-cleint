@@ -11,23 +11,50 @@ export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const [usernameErr, setUsernameErr] = useState({});
+  const [passwordErr, setPasswordErr] = useState({});
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    /* Send a request to the server for authentication */
-    axios.post('https://star-flix-movieworld.herokuapp.com/login', {
-      Username: username,
-      Password: password
-    })
-      .then(response => {
-        const data = response.data;
-        props.onLoggedIn(data);
-      })
-      .catch(e => {
-        console.log('no such user')
-      });
-  };
+    const isValid = formValidation();
 
+    if (isValid) {
+      /* Send a request to the server for authentication */
+      axios.post('https://star-flix-movieworld.herokuapp.com/login', {
+        Username: username,
+        Password: password
+      })
+        .then(response => {
+          const data = response.data;
+          props.onLoggedIn(data);
+        })
+        .catch(e => {
+          console.log('no such user')
+          alert("Username contains non alphanumeric characters - not allowed");
+        });
+    };
+  }
+
+  const formValidation = () => {
+    const usernameErr = {};
+    const passwordErr = {};
+    let isValid = true;
+
+    if (username.trim().length < 5) {
+      usernameErr.usernameShort = "Username must be at least 5 characters";
+      isValid = false;
+    }
+
+    if (password.trim().length < 1) {
+      passwordErr.passwordMissing = "You must enter a password";
+      isValid = false;
+    }
+
+    setUsernameErr(usernameErr);
+    setPasswordErr(passwordErr);
+    return isValid;
+  };
 
   return (
     <Container>

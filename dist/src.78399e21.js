@@ -53444,19 +53444,55 @@ function LoginView(props) {
       password = _useState4[0],
       setPassword = _useState4[1];
 
+  var _useState5 = (0, _react.useState)({}),
+      _useState6 = _slicedToArray(_useState5, 2),
+      usernameErr = _useState6[0],
+      setUsernameErr = _useState6[1];
+
+  var _useState7 = (0, _react.useState)({}),
+      _useState8 = _slicedToArray(_useState7, 2),
+      passwordErr = _useState8[0],
+      setPasswordErr = _useState8[1];
+
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    /* Send a request to the server for authentication */
+    var isValid = formValidation();
 
-    _axios.default.post('https://star-flix-movieworld.herokuapp.com/login', {
-      Username: username,
-      Password: password
-    }).then(function (response) {
-      var data = response.data;
-      props.onLoggedIn(data);
-    }).catch(function (e) {
-      console.log('no such user');
-    });
+    if (isValid) {
+      /* Send a request to the server for authentication */
+      _axios.default.post('https://star-flix-movieworld.herokuapp.com/login', {
+        Username: username,
+        Password: password
+      }).then(function (response) {
+        var data = response.data;
+        props.onLoggedIn(data);
+      }).catch(function (e) {
+        console.log('no such user');
+        alert("Username contains non alphanumeric characters - not allowed");
+      });
+    }
+
+    ;
+  };
+
+  var formValidation = function formValidation() {
+    var usernameErr = {};
+    var passwordErr = {};
+    var isValid = true;
+
+    if (username.trim().length < 5) {
+      usernameErr.usernameShort = "Username must be at least 5 characters";
+      isValid = false;
+    }
+
+    if (password.trim().length < 1) {
+      passwordErr.passwordMissing = "You must enter a password";
+      isValid = false;
+    }
+
+    setUsernameErr(usernameErr);
+    setPasswordErr(passwordErr);
+    return isValid;
   };
 
   return _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement("div", {
@@ -54601,7 +54637,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63851" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54319" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
