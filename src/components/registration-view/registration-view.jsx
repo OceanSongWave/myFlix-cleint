@@ -12,23 +12,59 @@ export function RegistrationView(props) {
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
 
+  const [usernameErr, setUsernameErr] = useState({});
+  const [passwordErr, setPasswordErr] = useState({});
+  const [emailErr, setEmailErr] = useState({});
+
   const handleRegister = (e) => {
     e.preventDefault();
-    axios.post('https://star-flix-movieworld.herokuapp.com/users', {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
-    })
-      .then(response => {
-        const data = response.data;
-        console.log(data);
-        window.open('/', '_self'); // '_self' is necessary so the page will open in the current tab
-        alert('You may now log in');
+
+    const isValid = formValidation();
+
+    if (isValid) {
+      axios.post('https://star-flix-movieworld.herokuapp.com/users', {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday
       })
-      .catch(e => {
-        console.log('error registering the user')
-      });
+        .then(response => {
+          const data = response.data;
+          console.log(data);
+          window.open('/', '_self'); // '_self' is necessary so the page will open in the current tab
+          alert('You may now log in');
+        })
+        .catch(e => {
+          console.log('error registering the user')
+        });
+    };
+  }
+
+  const formValidation = () => {
+    const usernameErr = {};
+    const passwordErr = {};
+    const emailErr = {};
+    let isValid = true;
+
+    if (username.trim().length < 5) {
+      usernameErr.usernameShort = "Username must be at least 5 characters";
+      isValid = false;
+    }
+
+    if (password.trim().length < 1) {
+      passwordErr.passwordMissing = "You must enter a password";
+      isValid = false;
+    }
+
+    if (!email.includes(".") && !email.includes("@")) {
+      emailErr.emailNotEmail = "A valid email address is required";
+      isValid = false;
+    }
+
+    setUsernameErr(usernameErr);
+    setPasswordErr(passwordErr);
+    setEmailErr(emailErr);
+    return isValid;
   };
 
   return (
@@ -132,5 +168,4 @@ RegistrationView.propTypes = {
     confirmPassword: PropTypes.string.isRequired,
     birthday: PropTypes.string.isRequired,
   }),
-  onRegister: PropTypes.func.isRequired,
 };

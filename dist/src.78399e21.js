@@ -53605,23 +53605,70 @@ function RegistrationView(props) {
       birthday = _useState8[0],
       setBirthday = _useState8[1];
 
+  var _useState9 = (0, _react.useState)({}),
+      _useState10 = _slicedToArray(_useState9, 2),
+      usernameErr = _useState10[0],
+      setUsernameErr = _useState10[1];
+
+  var _useState11 = (0, _react.useState)({}),
+      _useState12 = _slicedToArray(_useState11, 2),
+      passwordErr = _useState12[0],
+      setPasswordErr = _useState12[1];
+
+  var _useState13 = (0, _react.useState)({}),
+      _useState14 = _slicedToArray(_useState13, 2),
+      emailErr = _useState14[0],
+      setEmailErr = _useState14[1];
+
   var handleRegister = function handleRegister(e) {
     e.preventDefault();
+    var isValid = formValidation();
 
-    _axios.default.post('https://star-flix-movieworld.herokuapp.com/users', {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
-    }).then(function (response) {
-      var data = response.data;
-      console.log(data);
-      window.open('/', '_self'); // '_self' is necessary so the page will open in the current tab
+    if (isValid) {
+      _axios.default.post('https://star-flix-movieworld.herokuapp.com/users', {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday
+      }).then(function (response) {
+        var data = response.data;
+        console.log(data);
+        window.open('/', '_self'); // '_self' is necessary so the page will open in the current tab
 
-      alert('You may now log in');
-    }).catch(function (e) {
-      console.log('error registering the user');
-    });
+        alert('You may now log in');
+      }).catch(function (e) {
+        console.log('error registering the user');
+      });
+    }
+
+    ;
+  };
+
+  var formValidation = function formValidation() {
+    var usernameErr = {};
+    var passwordErr = {};
+    var emailErr = {};
+    var isValid = true;
+
+    if (username.trim().length < 5) {
+      usernameErr.usernameShort = "Username must be at least 5 characters";
+      isValid = false;
+    }
+
+    if (password.trim().length < 1) {
+      passwordErr.passwordMissing = "You must enter a password";
+      isValid = false;
+    }
+
+    if (!email.includes(".") && !email.includes("@")) {
+      emailErr.emailNotEmail = "A valid email address is required";
+      isValid = false;
+    }
+
+    setUsernameErr(usernameErr);
+    setPasswordErr(passwordErr);
+    setEmailErr(emailErr);
+    return isValid;
   };
 
   return _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement("div", {
@@ -53700,8 +53747,7 @@ RegistrationView.propTypes = {
     password: _propTypes.default.string.isRequired,
     confirmPassword: _propTypes.default.string.isRequired,
     birthday: _propTypes.default.string.isRequired
-  }),
-  onRegister: _propTypes.default.func.isRequired
+  })
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","axios":"../node_modules/axios/index.js","./registration-view.scss":"components/registration-view/registration-view.scss","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
 "use strict";
@@ -54637,7 +54683,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54319" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58222" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
