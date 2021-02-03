@@ -1,3 +1,91 @@
+.card {
+  width: 18rem;
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  height: 20%;
+}
+
+.card-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.card-body {
+  padding-bottom: 20px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 400px;
+}
+.movie-view {
+  position: static;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 50px;
+}
+
+.movie-poster {
+  max-height: 500px;
+  min-height: 440px;
+  padding-bottom: 20px;
+}
+
+.movie-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.movie-genre,
+.movie-director {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.director-view {
+  position: static;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.director-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.director-birth {
+  padding-bottom: 40px;
+}
+.genre-view {
+  position: static;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.genre-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.genre-description {
+  padding-bottom: 40px;
+}
+.container {
+  padding-top: 30px;
+}
 .my-flix {
   color: steelblue;
 }

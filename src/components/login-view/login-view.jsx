@@ -99,7 +99,7 @@ export function LoginView(props) {
           type="submit"
           onClick={handleSubmit}
         >
-          Log In
+          Sign In
           </Button>
 
         <br />

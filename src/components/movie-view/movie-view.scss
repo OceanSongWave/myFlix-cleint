@@ -1,0 +1,25 @@
+.movie-view {
+  position: static;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 50px;
+}
+
+.movie-poster {
+  max-height: 500px;
+  min-height: 440px;
+  padding-bottom: 20px;
+}
+
+.movie-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.movie-genre,
+.movie-director {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

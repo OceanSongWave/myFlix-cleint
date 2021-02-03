@@ -25,61 +25,23 @@ export class GenreView extends React.Component {
         <Row>
           <Col className="col-3" />
           <Col className="genre-view container-fluid align-items-center col-6">
-            <div className="genre-title ">
-              {/* <span className="label">Name: </span> */}
+            <div className="genre-title">
+              <span className="label">Genre Name: </span>
               <span className="value">{movie.Genre.Name}</span>
             </div>
-            <div className="genre-description ">
-              {/* <span className="label">Description: </span> */}
+            <br />
+            <div className="genre-description">
+              <span className="label">Description: </span>
               <span className="value">{movie.Genre.Description}</span>
             </div>
+            <br />
             <Link to={`/`}>
-              <Button variant="link">Return</Button>
+              <Button variant="info">Back to All Movies</Button>
             </Link>
           </Col>
           <Col className="col-3" />
         </Row>
-        {/* <Container>
-        <h4 className="mt-4">Some {genre.Genre.Name} movies</h4>
-        <div className="d-flex row mt-3 ml-2">
-          {movies.map((movie) => {
-            if (movie.Genre.Name === genre.Genre.Name) {
-              return (
-                <div key={movie._id}>
-                  <Card
-                    className="mb-3 mr-2 h-100"
-                    style={{ width: '16rem' }}
-                  >
-                    <Card.Img variant="top" src={movie.ImagePath} />
-                    <Card.Body>
-                      <Link
-                        className="text-muted"
-                        to={`/movies/${movie._id}`}
-                      >
-                        <Card.Title>{movie.Title}</Card.Title>
-                      </Link>
-                      <Card.Text>
-                        {movie.Description.substring(0, 90)}...
-                      </Card.Text>
-                    </Card.Body>
-                    <Card.Footer className="bg-white border-top-0">
-                      <Link to={`/movies/${movie._id}`}>
-                        <Button
-                          variant="link"
-                          className="read-more-link pl-0"
-                        >
-                          Read more
-                        </Button>
-                      </Link>
-                    </Card.Footer>
-                  </Card>
-                </div>
-              );
-            }
-          })}
-        </div>
-      </Container> */}
-      </Container>
+      </Container >
     );
   }
 }
@@ -89,7 +51,6 @@ GenreView.propTypes = {
     Genre: {
       Name: PropTypes.string.isRequired,
       Description: PropTypes.string.isRequired,
-      // ImagePath: PropTypes.string.isRequired,
     },
   }),
 };

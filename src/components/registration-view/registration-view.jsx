@@ -153,7 +153,7 @@ export function RegistrationView(props) {
             variant="secondary"
             className="login-button existing-user"
           >
-            Existing User - Log In
+            Existing User - Sign In
           </Button>
         </Link>
       </Form>
