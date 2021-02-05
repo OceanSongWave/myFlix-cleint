@@ -54674,8 +54674,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -54780,8 +54778,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _React$createElement,
-          _this3 = this;
+      var _this3 = this;
 
       // If the state isn't initialized, this will throw on runtime
       // before the data is initially loaded
@@ -54794,11 +54791,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
         className: "main-view"
-      }, _react.default.createElement(_reactBootstrap.Navbar, (_React$createElement = {
+      }, _react.default.createElement(_reactBootstrap.Navbar, {
+        bg: "info",
         expand: "lg",
         sticky: "top",
-        variant: "dark"
-      }, _defineProperty(_React$createElement, "expand", "lg"), _defineProperty(_React$createElement, "className", "navbar shadow-sm mb-5"), _React$createElement), _react.default.createElement(_reactBootstrap.Navbar.Brand, {
+        variant: "dark",
+        className: "navbar shadow-sm mb-5"
+      }, _react.default.createElement(_reactBootstrap.Navbar.Brand, {
         href: "/"
       }, "StarFlix"), _react.default.createElement(_reactBootstrap.Navbar.Toggle, {
         "aria-controls": "basic-navbar-nav"
@@ -55088,7 +55087,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56966" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54199" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

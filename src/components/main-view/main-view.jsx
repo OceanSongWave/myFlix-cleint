@@ -111,10 +111,10 @@ class MainView extends React.Component {
       <Router>
         <div className="main-view">
           <Navbar
+            bg="info"
             expand="lg"
             sticky="top"
             variant="dark"
-            expand="lg"
             className="navbar shadow-sm mb-5"
           >
             <Navbar.Brand
