@@ -63,7 +63,7 @@ export function LoginView(props) {
       </div>
       <br />
 
-      <Form>
+      <Form className="login-form">
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -77,7 +77,6 @@ export function LoginView(props) {
           >Must be alphanumeric and contain at least 5 characters.
           </Form.Text>
         </Form.Group>
-
 
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
@@ -98,19 +97,21 @@ export function LoginView(props) {
           className="login-button"
           type="submit"
           onClick={handleSubmit}
+          variant="primary"
+          block
         >
           Sign In
           </Button>
 
         <br />
-        <br />
 
         <Link to={`/register`}>
           <Button
-            className="sign-up-button new-user"
+            className="register-button"
             variant="secondary"
+            block
           >
-            New User - Sign Up Here!
+            New User - Register Here!
             </Button>
         </Link>
       </Form>

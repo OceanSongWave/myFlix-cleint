@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { ProfileView } from '../profile-view/profile-view';
-// import { UpdateView } from '../update-view/update-view';
+import { UpdateView } from '../update-view/update-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
@@ -32,10 +32,7 @@ class MainView extends React.Component {
     // Initialize the state to an empty object so we can destructure it later
     this.state = {
       movies: [],
-      movies: [],
       user: null
-      // selectedMovie: '',
-      // user: ''
     };
   }
 
@@ -121,8 +118,7 @@ class MainView extends React.Component {
             className="navbar shadow-sm mb-5"
           >
             <Navbar.Brand
-              href="http://localhost:1234"
-              className="navbar-brand"
+              href="/"
             >
               StarFlix
           </Navbar.Brand>
@@ -153,15 +149,6 @@ class MainView extends React.Component {
                 </ul>
               ) : (
                   <ul>
-                    <Link to={`/`}>
-                      <Button
-                        variant="link"
-                        className="navbar-link"
-                        onClick={() => this.logOut()}
-                      >
-                        Sign Out
-                  </Button>
-                    </Link>
                     <Link to={`/users/${user}`}>
                       <Button
                         variant="link"
@@ -170,6 +157,7 @@ class MainView extends React.Component {
                         My Account
                   </Button>
                     </Link>
+
                     <Link to={`/`}>
                       <Button
                         variant="link"
@@ -178,12 +166,23 @@ class MainView extends React.Component {
                         Movies
                   </Button>
                     </Link>
+
                     <Link to={`/about`}>
                       <Button
                         variant="link"
                         className="navbar-link"
                       >
                         About
+                  </Button>
+                    </Link>
+
+                    <Link to={`/`}>
+                      <Button
+                        variant="link"
+                        className="navbar-link"
+                        onClick={() => this.logOut()}
+                      >
+                        Sign Out
                   </Button>
                     </Link>
                   </ul>
@@ -223,12 +222,12 @@ class MainView extends React.Component {
             render={() => <ProfileView movies={movies} />}
           />
 
-          {/* <Route
+          <Route
             path="/update/:userId"
             render={() => {
               return <UpdateView />;
             }}
-          /> */}
+          />
 
           <Route
             path="/movies/:movieId"

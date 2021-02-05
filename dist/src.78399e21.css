@@ -28,6 +28,32 @@
   width: 100%;
   height: 400px;
 }
+.login-heading {
+  text-align: center;
+}
+
+.login-form {
+  width: 50%;
+  padding-top: 35px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.update-view {
+  margin: 0 auto;
+}
+
+.update-form {
+  margin: 3rem auto;
+}
+
+.update-button {
+  display: block;
+  width: 30%;
+  margin: 1rem 0;
+}
 .movie-view {
   position: static;
   text-align: center;

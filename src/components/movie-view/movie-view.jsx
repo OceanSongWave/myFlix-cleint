@@ -109,6 +109,7 @@ MovieView.propTypes = {
       // Birth: PropTypes.string.isRequired,
       // Death: PropTypes.string,
     }),
-  }).isRequired,
-  onClick: PropTypes.func.isRequired,
-};
+  })
+  // .isRequired,
+  // onClick: PropTypes.func.isRequired,
+}
