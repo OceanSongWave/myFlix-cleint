@@ -53412,7 +53412,7 @@ function MoviesList(props) {
 
   if (visibilityFilter !== '') {
     filteredMovies = movies.filter(function (m) {
-      return m.Title.includes(visibilityFilter);
+      return m.Title.toLocaleLowerCase().includes(visibilityFilter.toLocaleLowerCase());
     });
   }
 
@@ -53896,7 +53896,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       //console.log(localStorage.getItem("user"));
-      var url = "https://my-flix-db-app.herokuapp.com/users/" + localStorage.getItem("user");
+      var url = "https://star-flix-movieworld.herokuapp.com/users/" + localStorage.getItem("user");
 
       _axios.default.get(url, {
         headers: {
@@ -53912,30 +53912,33 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           favoriteMovies: response.data.FavoriteMovies
         });
       });
-    } //   removeFavorite(movie) {
-    //     let token = localStorage.getItem("token");
-    //     let url =
-    //       "https://my-flix-db-app.herokuapp.com/users/" +
-    //       localStorage.getItem("user") +
-    //       "/favorites/" +
-    //       movie._id;
-    //     axios
-    //       .delete(url, {
-    //         headers: { Authorization: `Bearer ${token}` },
-    //       })
-    //       .then((response) => {
-    //         console.log(response);
-    //         this.componentDidMount();
-    //       });
-    //   }
+    }
+  }, {
+    key: "removeFavorite",
+    value: function removeFavorite(movie) {
+      var _this3 = this;
 
+      var token = localStorage.getItem("token");
+
+      var url = "https://star-flix-movieworld.herokuapp.com/users/" + localStorage.getItem("user") + "/movies/" + movie._id;
+
+      _axios.default.delete(url, {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        console.log(response);
+
+        _this3.componentDidMount();
+      });
+    }
   }, {
     key: "handleDelete",
     value: function handleDelete() {
       var token = localStorage.getItem("token");
       var user = localStorage.getItem("user");
 
-      _axios.default.delete("https://my-flix-db-app.herokuapp.com/users/".concat(user), {
+      _axios.default.delete("https://star-flix-movieworld.herokuapp.com/users/".concat(user), {
         headers: {
           Authorization: "Bearer ".concat(token)
         }
@@ -53951,13 +53954,13 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var movies = this.props.movies; // this.getUser(localStorage.getItem("token"));
-      // const favoriteMovieList = movies.filter((movie) => {
-      //   return this.state.favoriteMovies.includes(movie._id);
-      // });
-      // console.log(favoriteMovieList);
+
+      var favoriteMovieList = movies.filter(function (movie) {
+        return _this4.state.favoriteMovies.includes(movie._id);
+      }); // console.log(favoriteMovieList);
 
       if (!movies) alert("Please sign in");
       return _react.default.createElement("div", {
@@ -53999,9 +54002,26 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         size: "sm",
         block: true,
         onClick: function onClick() {
-          return _this3.handleDelete();
+          return _this4.handleDelete();
         }
-      }, "Delete Account"))))));
+      }, "Delete Account"))), _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement("div", {
+        className: "favoriteMovies",
+        style: {
+          float: "right",
+          textAlign: "center",
+          width: "24rem"
+        }
+      }, _react.default.createElement("h1", null, "Favorite Movies"), favoriteMovieList.map(function (movie) {
+        return _react.default.createElement("div", {
+          key: movie._id
+        }, _react.default.createElement(_reactBootstrap.Card, null, _react.default.createElement(_reactBootstrap.Card.Body, null, _react.default.createElement(_reactRouterDom.Link, {
+          to: "/movies/".concat(movie._id)
+        }, _react.default.createElement(_reactBootstrap.Card.Title, null, movie.Title)))), _react.default.createElement(_reactBootstrap.Button, {
+          onClick: function onClick() {
+            return _this4.removeFavorite(movie);
+          }
+        }, "Remove"));
+      }))))));
     }
   }]);
 
@@ -54297,7 +54317,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     value: function addFavorite(movie) {
       var token = localStorage.getItem("token");
 
-      var url = "https://star-flix-movieworld.herokuapp.com/users/" + localStorage.getItem("user") + "/favorites/" + movie._id;
+      var url = "https://star-flix-movieworld.herokuapp.com/users/" + localStorage.getItem("user") + "/movies/" + movie._id;
 
       console.log(token);
 
@@ -54646,6 +54666,8 @@ var _reactRouterDom = require("react-router-dom");
 
 var _actions = require("../../actions/actions");
 
+var _visibilityFilterInput = _interopRequireDefault(require("../visibility-filter-input/visibility-filter-input"));
+
 var _moviesList = _interopRequireDefault(require("../movies-list/movies-list"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -54783,7 +54805,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       // If the state isn't initialized, this will throw on runtime
       // before the data is initially loaded
       // const { movies, user } = this.state;
-      var movies = this.props.movies;
+      var _this$props = this.props,
+          movies = _this$props.movies,
+          visibilityFilter = _this$props.visibilityFilter;
       var user = this.state.user;
       /* If there is no user, the LoginView is rendered.  If there is a user logged in, the user details are *passed as a prop to the LoginView */
       // Before the movies have been loaded
@@ -54837,7 +54861,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.logOut();
         }
-      }, "Sign Out"))))), _react.default.createElement(_reactRouterDom.Route, {
+      }, "Sign Out")))), _react.default.createElement(_visibilityFilterInput.default, {
+        visibilityFilter: visibilityFilter
+      })), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {
@@ -54925,7 +54951,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps, {
 })(MainView);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../actions/actions":"actions/actions.js","../movies-list/movies-list":"components/movies-list/movies-list.jsx","prop-types":"../node_modules/prop-types/index.js","../login-view/login-view":"components/login-view/login-view.jsx","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","../update-view/update-view":"components/update-view/update-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./main-view.scss":"components/main-view/main-view.scss"}],"reducers/reducers.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../actions/actions":"actions/actions.js","../visibility-filter-input/visibility-filter-input":"components/visibility-filter-input/visibility-filter-input.jsx","../movies-list/movies-list":"components/movies-list/movies-list.jsx","prop-types":"../node_modules/prop-types/index.js","../login-view/login-view":"components/login-view/login-view.jsx","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","../update-view/update-view":"components/update-view/update-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./main-view.scss":"components/main-view/main-view.scss"}],"reducers/reducers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -55087,7 +55113,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54199" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62840" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

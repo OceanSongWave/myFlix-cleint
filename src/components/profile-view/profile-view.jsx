@@ -34,7 +34,7 @@ export class ProfileView extends React.Component {
   getUser(token) {
     //console.log(localStorage.getItem("user"));
     let url =
-      "https://my-flix-db-app.herokuapp.com/users/" +
+      "https://star-flix-movieworld.herokuapp.com/users/" +
       localStorage.getItem("user");
     axios
       .get(url, {
@@ -52,29 +52,29 @@ export class ProfileView extends React.Component {
       });
   }
 
-  //   removeFavorite(movie) {
-  //     let token = localStorage.getItem("token");
-  //     let url =
-  //       "https://my-flix-db-app.herokuapp.com/users/" +
-  //       localStorage.getItem("user") +
-  //       "/favorites/" +
-  //       movie._id;
-  //     axios
-  //       .delete(url, {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       })
-  //       .then((response) => {
-  //         console.log(response);
-  //         this.componentDidMount();
-  //       });
-  //   }
+  removeFavorite(movie) {
+    let token = localStorage.getItem("token");
+    let url =
+      "https://star-flix-movieworld.herokuapp.com/users/" +
+      localStorage.getItem("user") +
+      "/movies/" +
+      movie._id;
+    axios
+      .delete(url, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+        this.componentDidMount();
+      });
+  }
 
   handleDelete() {
     let token = localStorage.getItem("token");
     let user = localStorage.getItem("user");
     axios
       .delete(
-        `https://my-flix-db-app.herokuapp.com/users/${user}`, { headers: { Authorization: `Bearer ${token}` } }
+        `https://star-flix-movieworld.herokuapp.com/users/${user}`, { headers: { Authorization: `Bearer ${token}` } }
       )
       .then(() => {
         alert(user + " has been deleted");
@@ -90,9 +90,9 @@ export class ProfileView extends React.Component {
   render() {
     const { movies } = this.props;
     // this.getUser(localStorage.getItem("token"));
-    // const favoriteMovieList = movies.filter((movie) => {
-    //   return this.state.favoriteMovies.includes(movie._id);
-    // });
+    const favoriteMovieList = movies.filter((movie) => {
+      return this.state.favoriteMovies.includes(movie._id);
+    });
     // console.log(favoriteMovieList);
 
     if (!movies) alert("Please sign in");
@@ -143,7 +143,7 @@ export class ProfileView extends React.Component {
 
               </Form>
             </Col>
-            {/* <Col>
+            <Col>
               <div
                 className="favoriteMovies"
                 style={{
@@ -170,7 +170,7 @@ export class ProfileView extends React.Component {
                   );
                 })}
               </div>
-            </Col> */}
+            </Col>
           </Row>
         </Container>
       </div>

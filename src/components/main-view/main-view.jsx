@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { setMovies } from '../../actions/actions';
-// import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 
 import MoviesList from '../movies-list/movies-list';
 import PropTypes from 'prop-types';
@@ -96,7 +96,7 @@ class MainView extends React.Component {
     // before the data is initially loaded
     // const { movies, user } = this.state;
 
-    let { movies } = this.props;
+    let { movies, visibilityFilter } = this.props;
     let { user } = this.state;
 
 
@@ -188,6 +188,9 @@ class MainView extends React.Component {
                   </ul>
                 )}
             </Navbar.Collapse>
+
+            <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+
           </Navbar>
 
           <Route

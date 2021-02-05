@@ -21,7 +21,7 @@ export class MovieView extends React.Component {
     let url =
       "https://star-flix-movieworld.herokuapp.com/users/" +
       localStorage.getItem("user") +
-      "/favorites/" +
+      "/movies/" +
       movie._id;
 
     console.log(token);
