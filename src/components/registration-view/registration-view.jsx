@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './registration-view.scss';
 
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Row } from 'react-bootstrap';
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
@@ -70,93 +70,101 @@ export function RegistrationView(props) {
   return (
     <Container>
       <div className="register-heading">
-        <h2>Create an account</h2>
+        Create a FREE Account
       </div>
       <br />
-      <Form className="registration-form">
-        <Form.Group controlId="formBasicUsername">
-          <Form.Label>Pick a Username: </Form.Label>
-          <Form.Control
-            className="form-field"
-            type="text"
-            placeholder="Username"
-            required
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Form.Text
-            className="text-muted"
-          >Must be alphanumeric and contain at least 5 characters.
+      <Row className="justify-content-center">
+        <Form className="registration-form">
+          <Form.Group controlId="formBasicUsername">
+            <Form.Label>Pick a Username: </Form.Label>
+            <Form.Control
+              className="form-field"
+              type="text"
+              placeholder="Username"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Form.Text
+              className="text-muted"
+            >Must be alphanumeric and contain at least 5 characters.
           </Form.Text>
-        </Form.Group>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Choose a Password: </Form.Label>
-          <Form.Control
-            className="form-field"
-            type="text"
-            placeholder="Password"
-            required
-            value-={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Form.Text
-            className="text-muted"
-          >Password is required.
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Choose a Password: </Form.Label>
+            <Form.Control
+              className="form-field"
+              type="text"
+              placeholder="Password"
+              required
+              value-={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Form.Text
+              className="text-muted"
+            >Password is required.
           </Form.Text>
-        </Form.Group>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Enter Email Address: </Form.Label>
-          <Form.Control
-            className="form-field"
-            type="text"
-            placeholder="example@gmail.com"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Form.Text
-            className="text-muted"
-          >Must be a valid email address.
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Enter Email Address: </Form.Label>
+            <Form.Control
+              className="form-field"
+              type="text"
+              placeholder="example@gmail.com"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Form.Text
+              className="text-muted"
+            >Must be a valid email address.
           </Form.Text>
-        </Form.Group>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicBirthday">
-          <Form.Label>Enter Date of Birth:</Form.Label>
-          <Form.Control
-            className="form-field"
-            type="date"
-            placeholder="MM/DD/YYYY"
-            required
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-          />
-        </Form.Group>
+          <Form.Group controlId="formBasicBirthday">
+            <Form.Label>Enter Date of Birth:</Form.Label>
+            <Form.Control
+              className="form-field"
+              type="date"
+              placeholder="MM/DD/YYYY"
+              required
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
+            />
+          </Form.Group>
+        </Form>
+      </Row>
 
-        <Button type="submit"
+      <Row className="justify-content-center">
+        <Button
+          type="submit"
           variant="primary"
-          className="sign-in-button"
+          className="create-account-button"
           onClick={handleRegister}
         >
-          Submit
+          Create My Account
         </Button>
+      </Row>
 
-        <br />
-        <br />
+      <br />
 
-        <div className="current-user">
-          Already have an account?
+
+      <div className="current-user">
+        Already have an account?
         </div>
+      <Row className="justify-content-center">
         <Link to={`/`}>
           <Button
             variant="secondary"
-            className="login-button existing-user"
+            size="sm"
+            className="current-user-button"
           >
-            Existing User - Sign In
+            Existing User - Login
           </Button>
         </Link>
-      </Form>
+      </Row>
     </Container>
   )
 };

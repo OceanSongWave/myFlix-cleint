@@ -1,20 +1,26 @@
 .movie-view {
+  color: #0f6774;
   position: static;
   text-align: center;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 50px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 3.25rem;
 }
 
 .movie-poster {
-  max-height: 500px;
-  min-height: 440px;
-  padding-bottom: 20px;
+  max-height: 31.25rem;
+  min-height: 27.5rem;
+  padding-bottom: 1.25rem;
 }
 
 .movie-title {
-  font-size: 1.25rem;
+  font-size: 1.85rem;
   font-weight: 700;
+}
+
+.movie-description {
+  font-size: 1.15rem;
+  font-weight: 450;
 }
 
 .movie-genre,
@@ -22,4 +28,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.genre-link {
+  font-size: 1.25rem;
+  font-weight: 450;
+}
+
+.director-link {
+  font-size: 1.25rem;
+  font-weight: 450;
+}
+
+.add-fav-button {
+  color: #138293;
+  font-size: 1.25rem;
+  font-weight: 500;
 }

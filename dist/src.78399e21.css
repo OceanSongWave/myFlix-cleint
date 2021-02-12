@@ -1,48 +1,167 @@
+.form-control {
+  display: block;
+  width: 600px;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #5F9EA0;
+}
 .card {
   width: 18rem;
-  margin-bottom: 30px;
+  margin-bottom: 2.5rem;
 }
 
 .card-title {
+  color: gold;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  min-height: 50px;
-  display: flex;
-  align-items: center;
-  height: 20%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  min-height: 3.75rem;
+  text-align: center;
 }
 
 .card-text {
+  color: white;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-  margin-bottom: 30px;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .card-body {
-  padding-bottom: 20px;
+  padding-bottom: 2.25rem;
+  background-color: #146f83;
+  text-align: center;
 }
 
 .card-img-top {
   width: 100%;
-  height: 400px;
+  height: 26.5rem;
 }
+.container {
+  align-content: center;
+}
+
 .login-heading {
   text-align: center;
+  color: #138293;
+  font-size: 2.75rem;
+  font-weight: 600;
+  padding-top: 1.5rem;
 }
 
 .login-form {
-  width: 50%;
-  padding-top: 35px;
+  color: #138293;
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
+}
+
+.text-muted {
+  font-size: 0.85rem;
+}
+
+.login-button {
+  font-size: 1.25rem;
+  width: 25rem;
+}
+
+.register-button {
+  color: #FFFF00;
+  font-size: 1.25rem;
+  width: 25rem;
+}
+.register-heading {
+  text-align: center;
+  color: #138293;
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding-top: 1.5rem;
+}
+
+.registration-form {
+  color: #138293;
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-muted {
+  font-size: 13px;
+}
+
+.create-account-button {
+  font-size: 1.25rem;
+  width: 25rem;
+}
+
+.current-user {
+  color: #138293;
+  text-align: center;
+  padding-top: 2rem;
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.current-user-button {
+  font-size: 1.25rem;
+  width: 25rem;
+}
+.userProfile {
+  color: #138293;
+  font-weight: 500;
+  padding-bottom: 3rem;
+}
+
+.userInfo {
+  color: #383838;
+}
+
+.edit-button {
+  width: 18rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.back-button {
+  width: 18rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.delete-button {
+  width: 18rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.remove-fav {
+  color: #138293;
+  width: 18rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 .update-view {
   margin: 0 auto;
+  color: #138293;
 }
 
 .update-form {
@@ -50,27 +169,31 @@
 }
 
 .update-button {
-  display: block;
-  width: 30%;
-  margin: 1rem 0;
+  width: 200px;
 }
 .movie-view {
+  color: #0f6774;
   position: static;
   text-align: center;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 50px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 3.25rem;
 }
 
 .movie-poster {
-  max-height: 500px;
-  min-height: 440px;
-  padding-bottom: 20px;
+  max-height: 31.25rem;
+  min-height: 27.5rem;
+  padding-bottom: 1.25rem;
 }
 
 .movie-title {
-  font-size: 1.25rem;
+  font-size: 1.85rem;
   font-weight: 700;
+}
+
+.movie-description {
+  font-size: 1.15rem;
+  font-weight: 450;
 }
 
 .movie-genre,
@@ -78,8 +201,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.genre-link {
+  font-size: 1.25rem;
+  font-weight: 450;
+}
+
+.director-link {
+  font-size: 1.25rem;
+  font-weight: 450;
+}
+
+.add-fav-button {
+  color: #138293;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 .director-view {
+  color: #0f6774;
   position: static;
   text-align: center;
   padding-left: 15px;
@@ -87,37 +229,70 @@
 }
 
 .director-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  padding-top: 3rem;
+  font-size: 1.85rem;
+  font-weight: 700;
+}
+
+.director-bio {
+  padding-top: 3rem;
+  font-size: 1.15rem;
+  font-weight: 450;
 }
 
 .director-birth {
-  padding-bottom: 40px;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  font-size: 1.15rem;
+  font-weight: 500;
 }
 .genre-view {
+  color: #0f6774;
   position: static;
   text-align: center;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .genre-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  padding-top: 3rem;
+  font-size: 1.85rem;
+  font-weight: 700;
 }
 
 .genre-description {
-  padding-bottom: 40px;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  font-size: 1.15rem;
+  font-weight: 450;
 }
-.container {
-  padding-top: 30px;
+.nav-link {
+  font-size: 1.35rem;
+  color: white;
 }
 
-.main-view {
-  background-color: lightgrey;
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #ffbd39;
 }
 .my-flix {
   color: steelblue;
+}
+
+body {
+  background-color: gainsboro;
+  font-family: "Poppins", sans-serif;
+}
+
+footer {
+  position: relative;
+  font-size: 0.65rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 6.5rem;
+  text-align: center;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

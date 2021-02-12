@@ -101,73 +101,97 @@ export class ProfileView extends React.Component {
         <Container>
           <Row>
             <Col>
-              <Form style={{ width: "24rem", float: "left" }}>
-                <h1 style={{ textAlign: "center" }}>Profile Details</h1>
+              <Form style={{ width: "26rem", float: "left" }}>
+                <h2 style={{ textAlign: "left", fontWeight: "600" }}>Your Profile Details</h2>
+                <br />
+                <br />
+
                 <Form.Group controlId="formBasicUsername">
-                  <h3>Username: </h3>
-                  <Form.Label>{this.state.username}</Form.Label>
+                  <h5>Username: </h5>
+                  <Form.Label className="userInfo">{this.state.username}</Form.Label>
                 </Form.Group>
+                <br />
                 <Form.Group controlId="formBasicEmail">
-                  <h3>Email:</h3>
-                  <Form.Label>{this.state.email}</Form.Label>
+                  <h5>Email:</h5>
+                  <Form.Label className="userInfo">{this.state.email}</Form.Label>
                 </Form.Group>
+                <br />
                 <Form.Group controlId="formBasicDate">
-                  <h3>Date of Birth:</h3>
-                  <Form.Label>{this.state.dob}</Form.Label>
+                  <h5>Date of Birth:</h5>
+                  <Form.Label className="userInfo">{this.state.dob}</Form.Label>
                 </Form.Group>
+                <br />
+                <br />
+
                 <Link to={`/update/${this.state.username}`}>
-                  <Button variant="outline-dark"
+                  <Button
+                    className="edit-button"
+                    variant="secondary"
                     type="link"
                     size="sm"
-                    block
                   >
-                    Edit Profile
+                    Edit Your Profile
                     </Button>
                 </Link>
+                <br />
+                <br />
+
                 <Link to={`/`}>
-                  <Button variant="outline-dark"
-                    type="submit"
+                  <Button
+                    className="back-button"
+                    variant="success"
                     size="sm"
-                    block
                   >
-                    Back to Main
+                    Back to All Movies
                   </Button>
                 </Link>
-                <Button variant="outline-danger"
+                <br />
+                <br />
+
+                <Button
+                  className="delete-button"
+                  variant="danger"
                   size="sm"
-                  block
                   onClick={() => this.handleDelete()}
                 >
-                  Delete Account
+                  Delete Your Account
                 </Button>
 
               </Form>
             </Col>
+
             <Col>
               <div
                 className="favoriteMovies"
                 style={{
                   float: "right",
-                  textAlign: "center",
-                  width: "24rem",
+                  textAlign: "left",
+                  width: "26rem",
                 }}
               >
-                <h1>Favorite Movies</h1>
+                <h2 style={{ textAlign: "left", fontWeight: "600" }}>Your Favorite Movies</h2>
+                <br />
+                <br />
                 {favoriteMovieList.map((movie) => {
                   return (
                     <div key={movie._id}>
-                      <Card>
+                      <Card >
                         <Card.Body>
                           <Link to={`/movies/${movie._id}`}>
                             <Card.Title>{movie.Title}</Card.Title>
                           </Link>
                         </Card.Body>
                       </Card>
-                      <Button onClick={() => this.removeFavorite(movie)}>
-                        Remove
+                      <Button
+                        className="remove-fav"
+                        variant="warning"
+                        size="sm"
+                        onClick={() => this.removeFavorite(movie)}>
+                        Remove from Favorites
                       </Button>
                     </div>
                   );
+                  <br />
                 })}
               </div>
             </Col>

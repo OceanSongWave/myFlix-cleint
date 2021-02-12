@@ -1,31 +1,37 @@
 .card {
   width: 18rem;
-  margin-bottom: 30px;
+  margin-bottom: 2.5rem;
 }
 
 .card-title {
+  color: gold;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  min-height: 50px;
-  display: flex;
-  align-items: center;
-  height: 20%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  min-height: 3.75rem;
+  text-align: center;
 }
 
 .card-text {
+  color: white;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-  margin-bottom: 30px;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .card-body {
-  padding-bottom: 20px;
+  padding-bottom: 2.25rem;
+  background-color: #146f83;
+  text-align: center;
 }
 
 .card-img-top {
   width: 100%;
-  height: 400px;
+  height: 26.5rem;
 }
-

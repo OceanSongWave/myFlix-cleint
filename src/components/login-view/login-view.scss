@@ -1,13 +1,37 @@
+.container {
+  align-content: center;
+}
+
 .login-heading {
   text-align: center;
+  color: #138293;
+  font-size: 2.75rem;
+  font-weight: 600;
+  padding-top: 1.5rem;
 }
 
 .login-form {
-  width: 50%;
-  padding-top: 35px;
+  color: #138293;
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
+}
+
+.text-muted{
+  font-size: 0.85rem;
+}
+
+.login-button {
+  font-size: 1.25rem;
+  width: 25rem;
+}
+
+.register-button {
+  color: #FFFF00;
+  font-size: 1.25rem;
+  width: 25rem;
 }

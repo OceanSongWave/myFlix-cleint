@@ -26,7 +26,7 @@ export class GenreView extends React.Component {
           <Col className="col-3" />
           <Col className="genre-view container-fluid align-items-center col-6">
             <div className="genre-title">
-              <span className="label">Genre Name: </span>
+              <span className="label"></span>
               <span className="value">{movie.Genre.Name}</span>
             </div>
             <br />

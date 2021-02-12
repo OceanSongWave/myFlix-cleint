@@ -1,0 +1,41 @@
+.register-heading {
+  text-align: center;
+  color: #138293;
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding-top: 1.5rem;
+}
+
+.registration-form {
+  color: #138293;
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-muted{
+  font-size: 13px;
+}
+
+.create-account-button {
+  font-size: 1.25rem;
+  width: 25rem;
+}
+
+.current-user {
+  color: #138293;
+  text-align: center;
+  padding-top: 2rem;
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.current-user-button {
+  font-size: 1.25rem;
+  width: 25rem;
+}

@@ -1,15 +1,20 @@
 .genre-view {
+  color: #0f6774;
   position: static;
   text-align: center;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .genre-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  padding-top: 3rem;
+  font-size: 1.85rem;
+  font-weight: 700;
 }
 
 .genre-description {
-  padding-bottom: 40px;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  font-size: 1.15rem;
+  font-weight: 450;
 }

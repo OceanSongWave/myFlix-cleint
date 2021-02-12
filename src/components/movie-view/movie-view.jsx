@@ -51,30 +51,38 @@ export class MovieView extends React.Component {
           <div className="movie-view container-fluid align-items-center col-6">
             <img className="movie-poster" src={movie.ImagePath} />
             <div className="movie-title">
-              <span className="label">Title: </span>
+              <span className="label"></span>
               <span className="value">{movie.Title}</span>
             </div>
             <br />
             <div className="movie-description">
-              <span className="label">Description: </span>
+              <span className="label"></span>
               <span className="value">{movie.Description}</span>
             </div>
             <br />
             <div className="movie-genre">
               <span className="label">Genre: </span>
               <Link to={`/genres/${movie.Genre.Name}`}>
-                <Button variant="link">{movie.Genre.Name}</Button>
+                <Button
+                  className="genre-link"
+                  variant="link">
+                  {movie.Genre.Name}</Button>
               </Link>
             </div>
             <div className="movie-director">
               <span className="label">Director: </span>
               <Link to={`/directors/${movie.Director.Name}`}>
-                <Button variant="link">{movie.Director.Name}</Button>
+                <Button
+                  className="director-link"
+                  variant="link">
+                  {movie.Director.Name}</Button>
               </Link>
             </div>
             <br />
+            <br />
             <div>
               <Button
+                className="add-fav-button"
                 variant="warning"
                 size="sm"
                 onClick={() => this.addFavorite(movie)}
@@ -84,7 +92,9 @@ export class MovieView extends React.Component {
             </div>
             <br />
             <Link to={`/`}>
-              <Button variant="info" size="sm">Back to All Movies</Button>
+              <Button variant="info" size="sm">
+                Back to All Movies
+                </Button>
             </Link>
           </div>
           <Col className="col-3" />

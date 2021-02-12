@@ -3,7 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Row } from 'react-bootstrap';
 
 import './login-view.scss';
 
@@ -59,62 +59,66 @@ export function LoginView(props) {
   return (
     <Container>
       <div className="login-heading">
-        <h2>Welcome to StarFlix</h2>
+        Welcome to StarFlix Movieworld!
       </div>
       <br />
 
-      <Form className="login-form">
-        <Form.Group controlId="formBasicUsername">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            type="text"
-            required
-            placeholder="Enter Username"
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-          />
-          <Form.Text className="text-muted"
-          >Must be alphanumeric and contain at least 5 characters.
+      <Row className="justify-content-center">
+        <Form className="login-form">
+          <Form.Group controlId="formBasicUsername">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="text"
+              required
+              placeholder="Enter Username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+            <Form.Text className="text-muted"
+            >Must be alphanumeric and contain at least 5 characters.
           </Form.Text>
-        </Form.Group>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            className="form-field"
-            type="password"
-            required
-            placeholder="Enter Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-          <Form.Text className="text-muted"
-          >Password is required.
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              className="form-field"
+              type="password"
+              required
+              placeholder="Enter Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <Form.Text className="text-muted"
+            >Password is required.
           </Form.Text>
-        </Form.Group>
+          </Form.Group>
+        </Form>
+      </Row>
 
+      <Row className="justify-content-center">
         <Button
           className="login-button"
+          variant="primary"
           type="submit"
           onClick={handleSubmit}
-          variant="primary"
-          block
         >
-          Sign In
+          Login
           </Button>
+      </Row>
 
-        <br />
+      <br />
 
+      <Row className="justify-content-center">
         <Link to={`/register`}>
           <Button
             className="register-button"
             variant="secondary"
-            block
           >
-            New User - Register Here!
+            New to StarFlix? - Join for FREE Here!
             </Button>
         </Link>
-      </Form>
+      </Row>
     </Container>
   )
 }

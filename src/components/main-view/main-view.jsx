@@ -20,7 +20,9 @@ import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 
-import { Navbar, Container, Row, Col, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container, Row, Col, Button } from 'react-bootstrap';
+
+import logo from '../../img/logo.svg'
 
 import './main-view.scss'
 
@@ -120,6 +122,13 @@ class MainView extends React.Component {
             <Navbar.Brand
               href="/"
             >
+              <img
+                src={logo}
+                width="35"
+                height="35"
+                className="d-inline-block align-top"
+                alt={logo}
+              />{' '}
               StarFlix
           </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -127,69 +136,20 @@ class MainView extends React.Component {
               className="justify-content-end"
               id="basic-navbar-nav"
             >
-              {/* <VisibilityFilterInput visibilityFilter={visibilityFilter} /> */}
               {!user ? (
-                <ul>
-                  <Link to={`/`}>
-                    <Button
-                      variant="link"
-                      className="navbar-link"
-                    >
-                      Sign In
-                  </Button>
-                  </Link>
-                  <Link to={`/register`}>
-                    <Button
-                      variant="link"
-                      className="navbar-link"
-                    >
-                      Register
-                  </Button>
-                  </Link>
-                </ul>
+                <Nav className="mr-auto">
+                  <Nav.Link href="/">Login</Nav.Link>
+                  <Nav.Link href="/register">Join</Nav.Link>
+                </Nav>
               ) : (
-                  <ul>
-                    <Link to={`/users/${user}`}>
-                      <Button
-                        variant="link"
-                        className="navbar-link"
-                      >
-                        My Account
-                  </Button>
-                    </Link>
-
-                    <Link to={`/`}>
-                      <Button
-                        variant="link"
-                        className="navbar-link"
-                      >
-                        Movies
-                  </Button>
-                    </Link>
-
-                    <Link to={`/about`}>
-                      <Button
-                        variant="link"
-                        className="navbar-link"
-                      >
-                        About
-                  </Button>
-                    </Link>
-
-                    <Link to={`/`}>
-                      <Button
-                        variant="link"
-                        className="navbar-link"
-                        onClick={() => this.logOut()}
-                      >
-                        Sign Out
-                  </Button>
-                    </Link>
-                  </ul>
+                  <Nav className="mr-auto">
+                    <Nav.Link href="/users/${user}">My Account</Nav.Link>
+                    <Nav.Link href="/">All Movies</Nav.Link>
+                    <Nav.Link href="/" onClick={() => this.logOut()}>Log Out</Nav.Link>{' '}
+                  </Nav>
                 )}
+              <VisibilityFilterInput visibilityFilter={visibilityFilter} />
             </Navbar.Collapse>
-
-            <VisibilityFilterInput visibilityFilter={visibilityFilter} />
 
           </Navbar>
 
@@ -269,6 +229,7 @@ class MainView extends React.Component {
     );
   }
 }
+
 
 let mapStateToProps = state => {
   return { movies: state.movies }

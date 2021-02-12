@@ -1,4 +1,5 @@
 .director-view {
+  color: #0f6774;
   position: static;
   text-align: center;
   padding-left: 15px;
@@ -6,10 +7,20 @@
 }
 
 .director-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  padding-top: 3rem;
+  font-size: 1.85rem;
+  font-weight: 700;
+}
+
+.director-bio {
+  padding-top: 3rem;
+  font-size: 1.15rem;
+  font-weight: 450;
 }
 
 .director-birth {
-  padding-bottom: 40px;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  font-size: 1.15rem;
+  font-weight: 500;
 }
