@@ -1,4 +1,8 @@
 # myFlix-client
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/31992055-3d12-4003-9c82-4f7cd5f8d710/deploy-status)](https://app.netlify.com/sites/starflix-movieworld/deploys)
+
+
 Project Objective - 
 Using React, build the client-side for an application called myFlix based on
 its existing server-side code (REST API and database).
