@@ -54665,7 +54665,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
         className: "genre-description"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Description: "), _react.default.createElement("span", {
+      }), _react.default.createElement("span", {
         className: "value"
       }, movie.Genre.Description)), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
@@ -54893,7 +54893,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, "Join")) : _react.default.createElement(_reactBootstrap.Nav, {
         className: "mr-auto"
       }, _react.default.createElement(_reactBootstrap.Nav.Link, {
-        href: "/users/${user}"
+        href: "/users/".concat(user)
       }, "My Account"), _react.default.createElement(_reactBootstrap.Nav.Link, {
         href: "/"
       }, "All Movies"), _react.default.createElement(_reactBootstrap.Nav.Link, {
@@ -55153,7 +55153,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56995" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64417" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

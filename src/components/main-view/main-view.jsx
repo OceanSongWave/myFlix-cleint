@@ -143,7 +143,7 @@ class MainView extends React.Component {
                 </Nav>
               ) : (
                   <Nav className="mr-auto">
-                    <Nav.Link href="/users/${user}">My Account</Nav.Link>
+                    <Nav.Link href={`/users/${user}`}>My Account</Nav.Link>
                     <Nav.Link href="/">All Movies</Nav.Link>
                     <Nav.Link href="/" onClick={() => this.logOut()}>Log Out</Nav.Link>{' '}
                   </Nav>
