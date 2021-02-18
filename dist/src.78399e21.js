@@ -53517,7 +53517,7 @@ function LoginView(props) {
 
     if (isValid) {
       /* Send a request to the server for authentication */
-      _axios.default.post('https://star-flix-movieworld.herokuapp.com/login', {
+      _axios.default.post('https://starflix-movieworld.herokuapp.com/login', {
         Username: username,
         Password: password
       }).then(function (response) {
@@ -53691,7 +53691,7 @@ function RegistrationView(props) {
     var isValid = formValidation();
 
     if (isValid) {
-      _axios.default.post('https://star-flix-movieworld.herokuapp.com/users', {
+      _axios.default.post('https://starflix-movieworld.herokuapp.com/users', {
         Username: username,
         Password: password,
         Email: email,
@@ -53915,7 +53915,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       //console.log(localStorage.getItem("user"));
-      var url = "https://star-flix-movieworld.herokuapp.com/users/" + localStorage.getItem("user");
+      var url = "https://starflix-movieworld.herokuapp.com/users/" + localStorage.getItem("user");
 
       _axios.default.get(url, {
         headers: {
@@ -53939,7 +53939,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
 
       var token = localStorage.getItem("token");
 
-      var url = "https://star-flix-movieworld.herokuapp.com/users/" + localStorage.getItem("user") + "/movies/" + movie._id;
+      var url = "https://starflix-movieworld.herokuapp.com/users/" + localStorage.getItem("user") + "/movies/" + movie._id;
 
       _axios.default.delete(url, {
         headers: {
@@ -53957,7 +53957,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var token = localStorage.getItem("token");
       var user = localStorage.getItem("user");
 
-      _axios.default.delete("https://star-flix-movieworld.herokuapp.com/users/".concat(user), {
+      _axios.default.delete("https://starflix-movieworld.herokuapp.com/users/".concat(user), {
         headers: {
           Authorization: "Bearer ".concat(token)
         }
@@ -54149,7 +54149,7 @@ function UpdateView(props) {
   var handleUpdate = function handleUpdate(e) {
     e.preventDefault();
     var isValid = formValidation();
-    var url = "https://star-flix-movieworld.herokuapp.com/users/" + localStorage.getItem("user");
+    var url = "https://starflix-movieworld.herokuapp.com/users/" + localStorage.getItem("user");
 
     if (isValid) {
       _axios.default.put(url, {
@@ -54360,7 +54360,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     value: function addFavorite(movie) {
       var token = localStorage.getItem("token");
 
-      var url = "https://star-flix-movieworld.herokuapp.com/users/" + localStorage.getItem("user") + "/movies/" + movie._id;
+      var url = "https://starflix-movieworld.herokuapp.com/users/" + localStorage.getItem("user") + "/movies/" + movie._id;
 
       console.log(token);
 
@@ -54791,7 +54791,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function getMovies(token) {
       var _this2 = this;
 
-      _axios.default.get('https://star-flix-movieworld.herokuapp.com/movies', {
+      _axios.default.get('https://starflix-movieworld.herokuapp.com/movies', {
         headers: {
           Authorization: "Bearer ".concat(token)
         }
@@ -55153,7 +55153,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64417" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52844" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

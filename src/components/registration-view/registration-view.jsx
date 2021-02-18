@@ -22,7 +22,7 @@ export function RegistrationView(props) {
     const isValid = formValidation();
 
     if (isValid) {
-      axios.post('https://star-flix-movieworld.herokuapp.com/users', {
+      axios.post('https://starflix-movieworld.herokuapp.com/users', {
         Username: username,
         Password: password,
         Email: email,

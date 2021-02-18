@@ -19,7 +19,7 @@ export class MovieView extends React.Component {
   addFavorite(movie) {
     let token = localStorage.getItem("token");
     let url =
-      "https://star-flix-movieworld.herokuapp.com/users/" +
+      "https://starflix-movieworld.herokuapp.com/users/" +
       localStorage.getItem("user") +
       "/movies/" +
       movie._id;

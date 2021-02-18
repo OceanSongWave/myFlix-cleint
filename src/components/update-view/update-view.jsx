@@ -23,7 +23,7 @@ export function UpdateView(props) {
     const isValid = formValidation();
 
     const url =
-      "https://star-flix-movieworld.herokuapp.com/users/" +
+      "https://starflix-movieworld.herokuapp.com/users/" +
       localStorage.getItem("user");
 
     if (isValid) {

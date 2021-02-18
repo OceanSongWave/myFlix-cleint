@@ -21,7 +21,7 @@ export function LoginView(props) {
 
     if (isValid) {
       /* Send a request to the server for authentication */
-      axios.post('https://star-flix-movieworld.herokuapp.com/login', {
+      axios.post('https://starflix-movieworld.herokuapp.com/login', {
         Username: username,
         Password: password
       })

@@ -34,7 +34,7 @@ export class ProfileView extends React.Component {
   getUser(token) {
     //console.log(localStorage.getItem("user"));
     let url =
-      "https://star-flix-movieworld.herokuapp.com/users/" +
+      "https://starflix-movieworld.herokuapp.com/users/" +
       localStorage.getItem("user");
     axios
       .get(url, {
@@ -55,7 +55,7 @@ export class ProfileView extends React.Component {
   removeFavorite(movie) {
     let token = localStorage.getItem("token");
     let url =
-      "https://star-flix-movieworld.herokuapp.com/users/" +
+      "https://starflix-movieworld.herokuapp.com/users/" +
       localStorage.getItem("user") +
       "/movies/" +
       movie._id;
@@ -74,7 +74,7 @@ export class ProfileView extends React.Component {
     let user = localStorage.getItem("user");
     axios
       .delete(
-        `https://star-flix-movieworld.herokuapp.com/users/${user}`, { headers: { Authorization: `Bearer ${token}` } }
+        `https://starflix-movieworld.herokuapp.com/users/${user}`, { headers: { Authorization: `Bearer ${token}` } }
       )
       .then(() => {
         alert(user + " has been deleted");
